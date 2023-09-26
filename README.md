@@ -28,6 +28,7 @@ how to utilize my local storage function as well as dayjs formatting
 ## Installation
 
 follow my git repo link in the html or deployed link to access the rest of my work both future and past.
+https://jakobpfeifer135.github.io/Work-day-scheduler/
 
 
 ## Usage
