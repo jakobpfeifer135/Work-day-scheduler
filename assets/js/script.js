@@ -4,10 +4,27 @@
 var today = dayjs()
 
 
+// when document loads then the code is set into action
+ $(document).ready(function(){
 
-$(function () {
+ 
     // TODO: Add a listener for click events on the save button. This code should
-
+    // access the button and input field id and save the given text in local storage.
+    var saveButton = $(".saveBtn")
+    saveButton.on("click", function(event){
+        event.default()
+        var buttonId = $(this).attr("id")
+        var inputField = $(this).siblings("description").val()
+        localStorage.setItem(buttonId, inputField)
+        populateSchedule()
+    })
+    //grabs the local storage values to set them ready for append
+    function populateSchedule() {
+        for (var index = 9; index < 18; index++) {
+            var task = localStorage.getItem(index)
+            $("#" + index + "").text(task)
+        }
+    }
     // use the id in the containing time-block as a key to save the user input in
     // local storage. HINT: What does `this` reference in the click listener
     // function? How can DOM traversal be used to get the "hour-x" id of the
@@ -22,14 +39,14 @@ $(function () {
     // current hour in 24-hour time?
     //
     // TODO: Add code to get any user input that was saved in localStorage and set
-    
+
     // the values of the corresponding textarea elements. HINT: How can the id
     // attribute of each time-block be used to do this?
     //
     // TODO: Add code to display the current date in the header of the page.
     $('#currentDay').text(today.format('MMM D, YYYY hh:mmA'))
-  });
-  
+
+})
 
 //   GIVEN I am using a daily planner to create a schedule
 // WHEN I open the planner
